@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <title>
+        Client App
+    </title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="/assets/vendor/nucleo/css/nucleo.min.css" rel="stylesheet">
+    <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+    <!-- Argon CSS -->
+    <link type="text/css" href="/assets/css/argon.min.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        
+    <h3 class="mb-3">Client Data</h3>
+        <div class="table-responsive">
+
+            <table class="table align-items-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="sort" data-sort="id">id</th>
+                        <th scope="col" class="sort" data-sort="name">Name</th>
+                        <th scope="col" class="sort" data-sort="company">Compant</th>
+                        <th scope="col" class="sort" data-sort="orderId">orderId</th>
+                        <th scope="col" class="sort" data-sort="invoicePaid">invoicepaid</th>
+                        <th scope="col" class="sort" data-sort="invoicePending">invoicePending</th>
+                        
+
+                    </tr>
+                </thead>
+                <tbody class="list">
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    <script>
+
+        
+        
+        fetch('https://run.mocky.io/v3/8260aa5d-8af8-4cff-999e-6e81b217f0ba', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('data', data.clients)
+                for (var i = 0; i < data.clients.length; i++) {
+                    tr = $('<tr/>');
+                    tr.append("<td>" + data.clients[i].id + "</td>");
+                    tr.append("<td>" + data.clients[i].name + "</td>");
+                    tr.append("<td>" + data.clients[i].company + "</td>");
+                    tr.append("<td>" + data.clients[i].orderId + "</td>");
+                    tr.append("<td>" + data.clients[i].invoicepaid + "</td>");
+                    tr.append("<td>" + data.clients[i].invoicePending + "</td>");
+                    $('table tbody').append(tr);
+                }
+            })
+
+
+
+
+
+    </script>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="/assets/js/argon.min.js"></script>
+
+
+</body>
+
+</html>
